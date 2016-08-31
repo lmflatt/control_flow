@@ -153,17 +153,22 @@ public class Customer {
                 stringAmt = stringAmt.substring(1);
             }
 
-            double numberAmt = Double.parseDouble(stringAmt);
+            try {
+                double numberAmt = Double.parseDouble(stringAmt);
 
-            if (balance >= numberAmt) {
-                balance -= numberAmt;
-                System.out.println();
-                System.out.println("Success. Your remaining balance is $" + balance + ".");
-                t =false;
+                if (balance >= numberAmt) {
+                    balance -= numberAmt;
+                    System.out.println();
+                    System.out.println("Success. Your remaining balance is $" + balance + ".");
+                    t = false;
+                } else {
+                    System.out.println();
+                    System.out.println("Withdrawal exceeds balance of $" + balance + ". Please enter another amount.");
+                }
             }
-            else {
+            catch (Exception e) {
                 System.out.println();
-                System.out.println("Withdrawal exceeds balance of $" + balance + ". Please enter another amount.");
+                System.out.println("Please enter a valid number.");
             }
         }
 
